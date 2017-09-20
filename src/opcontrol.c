@@ -29,8 +29,44 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
+
+const int FRONT_LEFT = 2;
+const int FRONT_RIGHT = 3;
+const int BACK_LEFT = 1;
+const int BACK_RIGHT = 10;
+
+void resetMotors() {
+	motorSet(FRONT_LEFT, 0);
+	motorSet(BACK_LEFT, 0);
+	motorSet(FRONT_RIGHT, 0);
+	motorSet(BACK_RIGHT, 0);
+}
+
+void drive(int speedLeft, int speedRight) {
+	motorSet(FRONT_LEFT, speedLeft);
+	motorSet(BACK_LEFT, -speedLeft);
+	motorSet(FRONT_RIGHT, -speedRight);
+	motorSet(BACK_RIGHT, speedRight);
+}
+
+void driveAndTurn() {
+	delay(5000);
+	drive(115,115);
+	delay(2000);
+	resetMotors();
+	delay(2000);
+	drive(-80,80);
+	delay(2000);
+	resetMotors();
+}
+
 void operatorControl() {
-	while (1) {
-		delay(20);
-	}
+	int power;
+   int turn;
+     while (1) {
+         power = joystickGetAnalog(1, 2); // vertical axis on left joystick
+         turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
+         drive(power + turn, power - turn); //moves with a turning factor
+         delay(20);
+     }
 }
