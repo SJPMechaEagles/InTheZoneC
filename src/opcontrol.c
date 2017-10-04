@@ -62,11 +62,11 @@ void driveAndTurn() {
 
 void operatorControl() {
 	int power;
-   int turn;
-     while (1) {
-         power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-         turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
-         drive(power + turn, power - turn); //moves with a turning factor
-         delay(20);
-     }
+  int turn;
+	while (1) {
+		power = joystickGetAnalog(1, 2); // vertical axis on left joystick
+    turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
+		drive(power + turn, power - turn); //moves with a turning factor
+    delay(20);
+	}
 }
