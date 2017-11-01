@@ -29,11 +29,19 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
+ #define liftSpeed -1 //must set lift speed when built
 
 const int FRONT_LEFT = 2;
 const int FRONT_RIGHT = 3;
 const int BACK_LEFT = 1;
 const int BACK_RIGHT = 10;
+
+const int LEFT_LIFT = -1; //must set when built
+const int RIGHT_LIFT = -1; //must set when built
+
+const int CLAW = -1; //must set when built
+
+void apple(int) {return;}
 
 void resetMotors() {
 	motorSet(FRONT_LEFT, 0);
@@ -60,13 +68,49 @@ void driveAndTurn() {
 	resetMotors();
 }
 
-void operatorControl() {
-	int power;
-  int turn;
-	while (1) {
-		power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-    turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
-		drive(power + turn, power - turn); //moves with a turning factor
-    delay(20);
+void lift() { //currently untested (11-1-17)
+	if(joystickGetDigital(0, 5, JOY_UP)) { //lift goes up
+		motorSet(LEFT_LIFT, liftSpeed);
+		motorSet(RIGHT_LIFT, -liftSpeed);
+	} else if(joystickGetDigital(0, 5, JOY_DOWN)) { //lift goes down
+		motorSet(LEFT_LIFT, -liftSpeed);
+		motorSet(RIGHT_LIFT, liftSpeed);
+	} else { //hold position
+		//code to hold position
+		//if lift goes down, increace motor power
+		//if lift goes up, decreace motor power
 	}
+}
+
+void claw() { //currently untested (11-1-17)
+	int clawSpeed = -1; //must set claw speed when built
+	if(joystickGetDigital(0, 6, JOY_UP)) { //open claw
+		motorSet(CLAW, clawSpeed);
+	}
+	if(joystickGetDigital(0, 6, JOY_DOWN)) { //close claw
+		motorSet(CLAW, -clawSpeed);
+	}
+}
+
+void arcadeControl() {
+		int power = joystickGetAnalog(1, 2); // vertical axis on left joystick
+    int turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
+		drive(power + turn, power - turn); //moves with a turning factor
+}
+
+void tankControl() { //currently untested (11-1-17)
+		int leftPower = joystickGetAnalog(1, 2); //vertical axis on left joystick
+		int rightPower = joystickGetAnalog(2, 2); //vertical axis on right joystick
+		drive(leftPower, rightPower); //sets corresponding side wheel to joystick
+}
+
+void operatorControl() {
+	while(1) {
+		//arcadeControl();
+		tankControl();
+		lift();
+		claw();
+		delay(20);
+	}
+
 }
