@@ -1,6 +1,6 @@
 #include "main.h"
 
-void apple(int) {return;}
+void apple(int param) {return;}
 
 //demo for learning to code
 void driveAndTurn() {

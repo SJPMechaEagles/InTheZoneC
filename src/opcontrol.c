@@ -11,6 +11,7 @@
  */
 
 #include "main.h"
+#include "goal_intake.h"
 
 /*
  * Runs the user operator control code. This function will be started in its own task with the
@@ -31,17 +32,15 @@
  */
 
 
-
-
-
-
 void operatorControl() {
 	while(1) {
 		//arcadeControl();
 		tankControl();
 		lift();
 		claw();
+    goalIntake();
 		delay(20);
+    resetMotors();
 	}
 
 }

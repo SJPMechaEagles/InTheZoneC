@@ -1,6 +1,6 @@
 #include "main.h"
 
-#define CLAW -1 //motor - must set when built
+#define CLAW -1 //servo - must set when built
 
 
 void claw() { //currently untested (11-1-17)
