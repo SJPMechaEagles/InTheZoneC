@@ -11,6 +11,7 @@
  */
 
 #include "main.h"
+#include "cage.h"
 #include "goal_intake.h"
 
 /*
@@ -36,8 +37,9 @@ void operatorControl() {
 	while(1) {
 		//arcadeControl();
 		tankControl();
-		lift();
-		claw();
+		cage();
+		//lift();
+		//claw();
     goalIntake();
 		delay(20);
     resetMotors();

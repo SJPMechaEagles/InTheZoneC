@@ -29,6 +29,8 @@
 #include "claw.h"
 #include "lift.h"
 #include "chassis.h"
+#include "goal_intake.h"
+#include "cage.h"
 
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus
