@@ -31,6 +31,7 @@
 #include "chassis.h"
 #include "goal_intake.h"
 #include "cage.h"
+#include "launcher.h"
 
 void resetAllMotors();
 
