@@ -32,6 +32,8 @@
 #include "goal_intake.h"
 #include "cage.h"
 
+void resetAllMotors();
+
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus
 extern "C" {

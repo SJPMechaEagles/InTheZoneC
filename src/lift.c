@@ -7,10 +7,10 @@
 
 
 void lift() { //currently untested (11-1-17)
-	if(joystickGetDigital(0, 5, JOY_UP)) { //lift goes up
+	if(joystickGetDigital(1, 5, JOY_UP)) { //lift goes up
 		motorSet(LEFT_LIFT, liftSpeed);
 		motorSet(RIGHT_LIFT, -liftSpeed);
-	} else if(joystickGetDigital(0, 5, JOY_DOWN)) { //lift goes down
+	} else if(joystickGetDigital(1, 5, JOY_DOWN)) { //lift goes down
 		motorSet(LEFT_LIFT, -liftSpeed);
 		motorSet(RIGHT_LIFT, liftSpeed);
 	} else { //hold position
@@ -18,4 +18,9 @@ void lift() { //currently untested (11-1-17)
 		//if lift goes down, increace motor power
 		//if lift goes up, decreace motor power
 	}
+}
+
+void resetLiftMotors() {
+	motorSet(LEFT_LIFT, 0);
+	motorSet(RIGHT_LIFT, 0);
 }

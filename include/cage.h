@@ -3,4 +3,6 @@
 
 
 void cage();
+void resetCageMotors();
+
 #endif

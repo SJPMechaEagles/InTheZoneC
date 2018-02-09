@@ -2,5 +2,6 @@
 #define _LIFT_H_
 
 void lift();
+void resetLiftMotors();
 
-#endif 
+#endif
