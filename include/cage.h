@@ -3,6 +3,8 @@
 
 
 void cage();
+void cageUp();
+void cageDown();
 void resetCageMotors();
 
 #endif

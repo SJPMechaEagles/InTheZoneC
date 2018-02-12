@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-void resetAllMotors();
+
 /*
  * Runs the user operator control code. This function will be started in its own task with the
  * default priority and stack size whenever the robot is enabled via the Field Management System
@@ -31,16 +31,10 @@ void resetAllMotors();
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
 
-void resetAllMotors() {
-	resetDriveMotors();
-	resetCageMotors();
-	resetClawMotors();
-	resetGoalIntakeMotors();
-	resetLiftMotors();
-}
+
 
 void operatorControl() {
-	while(1) {
+	for(;;) {
 		//arcadeControl();
 		tankControl();
 		cage();
@@ -48,7 +42,6 @@ void operatorControl() {
 		//claw();
     goalIntake();
 		delay(20);
-    resetAllMotors();
 	}
 
 }

@@ -3,4 +3,6 @@
 
 void launcher();
 
+#define LAUNCHER_SPEED 80
+
 #endif

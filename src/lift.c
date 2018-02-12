@@ -1,26 +1,11 @@
 #include "main.h"
 
-#define liftSpeed -1 //must set lift speed when built
+void liftUp() { motorSet(LEFT_LIFT, liftSpeed); motorSet(RIGHT_LIFT, -liftSpeed); }
+void liftDown() { motorSet(LEFT_LIFT, -liftSpeed); motorSet(RIGHT_LIFT, liftSpeed); }
+void resetLiftMotors() { motorSet(LEFT_LIFT, 0); motorSet(RIGHT_LIFT, 0); }
 
-#define LEFT_LIFT -1 //motor - must set when built
-#define RIGHT_LIFT -1 //motor - must set when built
-
-
-void lift() { //currently untested (11-1-17)
-	if(joystickGetDigital(1, 5, JOY_UP)) { //lift goes up
-		motorSet(LEFT_LIFT, liftSpeed);
-		motorSet(RIGHT_LIFT, -liftSpeed);
-	} else if(joystickGetDigital(1, 5, JOY_DOWN)) { //lift goes down
-		motorSet(LEFT_LIFT, -liftSpeed);
-		motorSet(RIGHT_LIFT, liftSpeed);
-	} else { //hold position
-		//code to hold position
-		//if lift goes down, increace motor power
-		//if lift goes up, decreace motor power
-	}
-}
-
-void resetLiftMotors() {
-	motorSet(LEFT_LIFT, 0);
-	motorSet(RIGHT_LIFT, 0);
+void lift() { //currently untested (2-12-18)
+	if(joystickGetDigital(1, 5, JOY_UP)) { liftUp(); }
+	else if(joystickGetDigital(1, 5, JOY_DOWN)) { liftDown() }
+	else { resetLiftMotors(); } //hold position
 }

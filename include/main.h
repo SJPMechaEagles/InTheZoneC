@@ -26,14 +26,15 @@
 #define MAIN_H_
 
 #include <API.h>
+#include "defines.h"
 #include "claw.h"
 #include "lift.h"
 #include "chassis.h"
 #include "goal_intake.h"
 #include "cage.h"
 #include "launcher.h"
-
-void resetAllMotors();
+#include "motor_control.h"
+#include "controller.h"
 
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus

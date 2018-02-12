@@ -1,22 +1,11 @@
 #include "main.h"
 
-#define strength 80
-#define INTAKE_LEFT 6 //motor - must set when built
-#define INTAKE_RIGHT 7 //motor - must set when built
+void goalIntakeIn() { motorSet(INTAKE_LEFT, goalIntakeSpeed); motorSet(INTAKE_RIGHT, goalIntakeSpeed); }
+void goalIntakeOut() { motorSet(INTAKE_LEFT, -goalIntakeSpeed); motorSet(INTAKE_RIGHT, -goalIntakeSpeed); }
+void resetGoalIntakeMotors() { motorSet(INTAKE_LEFT, 0); motorSet(INTAKE_RIGHT, 0); }
 
-void goalIntake() {
-
- //currently untested (11-1-17)
-  	if(joystickGetDigital(1, 6, JOY_UP)) { //goal intake goes up
-  		motorSet(INTAKE_LEFT, strength);
-  		motorSet(INTAKE_RIGHT, strength);
-  	} else if(joystickGetDigital(1, 6, JOY_DOWN)) { //goal intake goes down
-  		motorSet(INTAKE_LEFT, -strength);
-  		motorSet(INTAKE_RIGHT, -strength);
-  	}
-}
-
-void resetGoalIntakeMotors() {
-  motorSet(INTAKE_LEFT, 0);
-	motorSet(INTAKE_RIGHT, 0);
+void goalIntake() { //currently untested (2-12-18)
+  	if(joystickGetDigital(JOYSTICK_ONE, RIGHT_BUMPERS, JOY_UP)) { goalIntakeIn(); }
+    else if(joystickGetDigital(JOYSTICK_ONE, RIGHT_BUMPERS, JOY_DOWN)) { goalIntakeOut(); }
+    else { resetGoalIntakeMotors(); } //hold position
 }

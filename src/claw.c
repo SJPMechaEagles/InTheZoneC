@@ -1,18 +1,11 @@
 #include "main.h"
 
-#define CLAW -1 //servo - must set when built
+void clawOpen() { motorSet(CLAW, clawSpeed); }
+void clawClose() { motorSet(CLAW, -clawSpeed); }
+void resetClawMotors() { motorSet(CLAW, 0); }
 
-
-void claw() { //currently untested (11-1-17)
-	int clawSpeed = -1; //must set claw speed when built
-	if(joystickGetDigital(1, 6, JOY_UP)) { //open claw
-		motorSet(CLAW, clawSpeed);
-	}
-	if(joystickGetDigital(1, 6, JOY_DOWN)) { //close claw
-		motorSet(CLAW, -clawSpeed);
-	}
-}
-
-void resetClawMotors() {
-	motorSet(CLAW, 0);
+void claw() { //currently untested (2-12-18)
+	if(joystickGetDigital(JOYSTICK_ONE, LEFT_D_PAD, JOY_UP)) { clawOpen(); }
+	else if(joystickGetDigital(JOYSTICK_ONE, LEFT_D_PAD, JOY_DOWN)) { clawClose(); }
+	else { resetClawMotors(); } //hold position
 }
