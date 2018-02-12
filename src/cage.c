@@ -1,7 +1,5 @@
 #include "main.h"
 
-#define cageSpeed 80
-
 void cageUp() { motorSet(CAGE_LEFT, cageSpeed); motorSet(CAGE_RIGHT, -cageSpeed); }
 void cageDown() { motorSet(CAGE_LEFT, -cageSpeed); motorSet(CAGE_RIGHT, cageSpeed); }
 void resetCageMotors() { motorSet(CAGE_LEFT, 0); motorSet(CAGE_RIGHT, 0); }
