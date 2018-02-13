@@ -1,12 +1,11 @@
 #include "main.h"
 
 //example file
+void launcherFire() {motorSet(LAUNCHER, LAUNCHER_SPEED);}
+void resetLauncherMotors() {motorSet(LAUNCHER, 0);}
 
 void launcher() {
   //im a body :)
-  if(joystickGetDigital(JOYSTICK_ONE, LEFT_D_PAD, JOY_LEFT)) {
-    motorSet(LAUNCHER, LAUNCHER_SPEED);
-  } else {
-    motorSet(LAUNCHER, 0);
-  }
+  if(LAUNCHER_FIRE) {launcherFire();}
+  else {resetLauncherMotors();} //stop launcher
 }

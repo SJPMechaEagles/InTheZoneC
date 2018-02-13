@@ -6,6 +6,8 @@ void clawOpen();
 void clawClose();
 void resetClawMotors();
 
-#define clawSpeed -1
+#define CLAW_SPEED -1 //undefined
+#define CLAW_OPEN joystickGetDigital(JOYSTICK_ONE, LEFT_D_PAD, JOY_UP)
+#define CLAW_CLOSE joystickGetDigital(JOYSTICK_ONE, LEFT_D_PAD, JOY_DOWN)
 
 #endif

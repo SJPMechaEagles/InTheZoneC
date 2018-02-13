@@ -6,6 +6,6 @@ void cageUp();
 void cageDown();
 void resetCageMotors();
 
-#define cageSpeed 80
+#define CAGE_SPEED 80
 
 #endif

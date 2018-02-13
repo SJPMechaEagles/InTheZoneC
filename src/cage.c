@@ -1,11 +1,11 @@
 #include "main.h"
 
-void cageUp() { motorSet(CAGE_LEFT, cageSpeed); motorSet(CAGE_RIGHT, -cageSpeed); }
-void cageDown() { motorSet(CAGE_LEFT, -cageSpeed); motorSet(CAGE_RIGHT, cageSpeed); }
-void resetCageMotors() { motorSet(CAGE_LEFT, 0); motorSet(CAGE_RIGHT, 0); }
+void cageUp() {motorSet(CAGE_LEFT, -CAGE_SPEED); motorSet(CAGE_RIGHT, -CAGE_SPEED);}
+void cageDown() {motorSet(CAGE_LEFT, CAGE_SPEED); motorSet(CAGE_RIGHT, CAGE_SPEED);}
+void resetCageMotors() {motorSet(CAGE_LEFT, 0); motorSet(CAGE_RIGHT, 0);}
 
 void cage() {
-  if(joystickGetDigital(JOYSTICK_ONE, LEFT_BUMPERS, JOY_UP)) { cageUp(); }
-  else if(joystickGetDigital(JOYSTICK_ONE, LEFT_BUMPERS, JOY_DOWN)) { cageDown(); }
+  if(CAGE_UP) { cageUp(); }
+  else if(CAGE_DOWN) { cageDown(); }
   else { resetCageMotors(); } //hold position
 }

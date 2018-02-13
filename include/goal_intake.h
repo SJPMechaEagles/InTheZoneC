@@ -6,6 +6,7 @@ void goalIntakeIn();
 void goalIntakeOut();
 void resetGoalIntakeMotors();
 
-#define goalIntakeSpeed 80
+#define GOAL_INTAKE_SPEED 80
+
 
 #endif

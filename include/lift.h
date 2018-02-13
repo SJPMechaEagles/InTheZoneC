@@ -6,6 +6,7 @@ void liftUp();
 void liftDown();
 void resetLiftMotors();
 
-#define liftSpeed -1 //must set lift speed when built
+#define LIFT_SPEED -1 //must set lift speed when built
+
 
 #endif
